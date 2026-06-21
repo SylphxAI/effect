@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "repo": "SylphxAI/effect",
+    "name": "Effect Dart",
+    "lifecycle": "active",
+    "layer": "foundation",
+    "summary": "Dart effect-system package with typed effects, typed errors, dependency context, runtime execution, concurrency, and functional data types.",
+    "goals": [
+      "Provide the public effect_dart Dart package export.",
+      "Own typed Effect, Runtime, Context, Exit, Cause, Option, Either, random, big-decimal, and array utility semantics.",
+      "Keep examples, tests, README examples, and Dart analysis aligned with the package API."
+    ],
+    "nonGoals": [
+      "Own Effect-TS, Dart or Flutter application behavior, customer workflows, UI frameworks, or AI provider integrations.",
+      "Own enterprise doctrine, package registry operations, or downstream release policy.",
+      "Own product-specific side-effect policy beyond the generic effect-system primitives."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "name": "effect-dart-package-api",
+        "description": "The effect_dart package export, Dart source under lib/, package metadata, and typed effect-system behavior exposed to consumers."
+      },
+      {
+        "name": "effect-dart-docs-tests-examples",
+        "description": "Repository README, docs, changelog, examples, and tests that demonstrate and validate the package API."
+      }
+    ],
+    "doesNotOwn": [
+      "Effect-TS, Dart or Flutter application behavior, UI framework bindings, customer workflows, or AI provider integrations.",
+      "Package registry operations, consuming application release policy, or enterprise engineering doctrine.",
+      "Product-specific side-effect policy beyond the generic effect-system primitives."
+    ],
+    "publicSurfaces": [
+      {
+        "type": "package-export",
+        "name": "effect_dart package export",
+        "location": "pubspec.yaml and lib/effect_dart.dart"
+      },
+      {
+        "type": "documentation",
+        "name": "README, docs, changelog, and examples",
+        "location": "README.md, docs/, CHANGELOG.md, and example/"
+      },
+      {
+        "type": "documentation",
+        "name": "Package behavior tests",
+        "location": "test/"
+      }
+    ],
+    "allowedDependencies": [
+      {
+        "repo": "SylphxAI/doctrine",
+        "surface": "project manifest schema and engineering doctrine",
+        "direction": "peer-public"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Do not add consumer-specific application behavior, UI framework assumptions, or customer workflow policy to the package core.",
+      "Do not make consumers depend on internal lib/src files instead of the public package export unless a repo-local ADR explicitly promotes that surface.",
+      "Do not fork doctrine standards into this repository."
+    ]
+  },
+  "documentation": {
+    "adr": {
+      "path": "docs/adr/",
+      "status": "planned"
+    },
+    "specs": {
+      "path": "docs/",
+      "status": "present"
+    },
+    "catalog": {
+      "path": ".doctrine/project.json",
+      "status": "present"
+    },
+    "runbooks": {
+      "path": "README.md",
+      "status": "planned"
+    },
+    "generatedReferences": {
+      "path": "lib/effect_dart.dart",
+      "status": "present"
+    }
+  },
+  "delivery": {
+    "ciModel": "none",
+    "requiredContexts": [],
+    "deployPath": "No repo-local GitHub CI or package release workflow is present. Package publication path is not declared in this repository baseline.",
+    "productionProof": "Dart format, dart analyze --fatal-infos, dart test, example/API readback, and package registry readback for published versions.",
+    "recoveryClass": "forward-fix-only"
+  },
+  "adoption": {
+    "status": "baseline",
+    "gaps": [
+      {
+        "id": "repo-ci-workflow-missing",
+        "description": "The repository has Dart validation commands but no GitHub PR or merge_group CI workflow recorded at this baseline.",
+        "owner": "SylphxAI/effect",
+        "target": "before adoption.status becomes full"
+      },
+      {
+        "id": "release-runbook-missing",
+        "description": "Published package versions are forward-only for consumers; add bad-release and registry recovery guidance before production lifecycle promotion.",
+        "owner": "SylphxAI/effect",
+        "target": "before production lifecycle promotion"
+      }
+    ]
+  }
+}
