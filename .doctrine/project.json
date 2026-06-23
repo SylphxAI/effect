@@ -5,6 +5,7 @@
     "name": "Effect Dart",
     "lifecycle": "active",
     "layer": "foundation",
+    "policyPool": "library-package",
     "summary": "Dart effect-system package with typed effects, typed errors, dependency context, runtime execution, concurrency, and functional data types.",
     "goals": [
       "Provide the public effect_dart Dart package export.",
@@ -87,6 +88,7 @@
   },
   "delivery": {
     "ciModel": "none",
+    "deployable": false,
     "requiredContexts": [],
     "deployPath": "No repo-local GitHub CI or package release workflow is present. Package publication path is not declared in this repository baseline.",
     "productionProof": "Dart format, dart analyze --fatal-infos, dart test, example/API readback, and package registry readback for published versions.",
